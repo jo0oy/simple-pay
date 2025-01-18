@@ -35,3 +35,9 @@ out/
 
 ### VS Code ###
 .vscode/
+
+### ENV file ###
+.env
+
+### DB Data Dir ###
+db/data/
