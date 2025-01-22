@@ -1,4 +1,4 @@
 rootProject.name = 'simple-pay'
 include 'member-service'
 include 'common'
-
+include 'banking-service'
