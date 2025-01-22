@@ -6,6 +6,7 @@ import com.simplepay.banking.port.in.RegisteredBankAccountCommand;
 import com.simplepay.banking.port.out.RegisterBankAccountPort;
 import com.simplepay.common.annotation.UseCase;
 import lombok.RequiredArgsConstructor;
+import org.springframework.transaction.annotation.Transactional;
 
 @RequiredArgsConstructor
 @UseCase
@@ -13,6 +14,7 @@ public class RegisterBankAccount implements RegisterBankAccountUseCase {
 
     private final RegisterBankAccountPort registerBankAccountPort;
 
+    @Transactional
     @Override
     public RegisteredBankAccount registerBankAccount(RegisteredBankAccountCommand command) {
 
