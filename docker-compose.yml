@@ -24,6 +24,17 @@ services:
     env_file:
       - .env
 
+  banking-service:
+    image: simple-pay-banking-service:0.0.1-SNAPSHOT
+    networks:
+      - simplepay_network
+    ports:
+      - "8082:8080"
+    depends_on:
+      - mysql
+    env_file:
+      - .env
+
 networks:
   simplepay_network:
     driver: bridge
