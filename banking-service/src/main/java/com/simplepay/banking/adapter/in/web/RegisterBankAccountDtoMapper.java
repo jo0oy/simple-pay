@@ -5,9 +5,9 @@ import com.simplepay.banking.port.in.RegisteredBankAccountCommand;
 import org.springframework.stereotype.Component;
 
 @Component
-public class RegisteredBankAccountDtoMapper {
+public class RegisterBankAccountDtoMapper {
 
-    public RegisteredBankAccountCommand mapToCommand(RegisteredBankAccountRequest request) {
+    public RegisteredBankAccountCommand mapToCommand(RegisterBankAccountRequest request) {
         return new RegisteredBankAccountCommand(
             request.memberId(),
             request.bankName(),

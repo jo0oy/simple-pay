@@ -1,6 +1,6 @@
 package com.simplepay.banking.adapter.in.web;
 
-import com.simplepay.banking.port.service.RegisterBankAccount;
+import com.simplepay.banking.port.service.RegisterBankAccountService;
 import com.simplepay.common.api.ApiResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -16,16 +16,16 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class RegisterBankAccountApiController {
 
-    private final RegisterBankAccount registerBankAccount;
-    private final RegisteredBankAccountDtoMapper registeredBankAccountDtoMapper;
+    private final RegisterBankAccountService registerBankAccountService;
+    private final RegisterBankAccountDtoMapper registerBankAccountDtoMapper;
 
     @PostMapping("")
     public ResponseEntity<ApiResponse<RegisteredBankAccountInfoResponse>> registerBankAccount(
-        @Valid @RequestBody RegisteredBankAccountRequest request
+        @Valid @RequestBody RegisterBankAccountRequest request
     ) {
-        var command = registeredBankAccountDtoMapper.mapToCommand(request);
-        var registeredBankAccount = registerBankAccount.registerBankAccount(command);
-        var data = registeredBankAccountDtoMapper.mapToResponse(registeredBankAccount);
+        var command = registerBankAccountDtoMapper.mapToCommand(request);
+        var registeredBankAccount = registerBankAccountService.registerBankAccount(command);
+        var data = registerBankAccountDtoMapper.mapToResponse(registeredBankAccount);
 
         return ResponseEntity
             .status(HttpStatus.CREATED)
